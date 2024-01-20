@@ -9,13 +9,18 @@ var player: Character
 
 var money: int = 0
 
+var allow_zoom: bool = true
+var allow_actions: bool = true
+
 @onready var money_label: Label = $/root/main/UI/Money
+@onready var character: Character = $/root/main/Character
 
 @onready var esc: PanelContainer = $/root/main/UI/Esc
 @onready var camera: Camera = $/root/main/Camera3D
 @onready var holograms: Node3D = $/root/main/holograms
 
 @onready var islands_parent: Node3D = $/root/main/islands
+@onready var main: Main = $"/root/main"
 
 @onready var island_1: Node3D = $/root/main/holograms/island1
 @onready var island_2: Node3D = $/root/main/holograms/island2
@@ -110,7 +115,7 @@ func exit_island_buy() -> void:
 	scale_node(holograms, Vector3(0.01, 0.01, 0.01))
 
 
-func scale_node(node: Node, scale: Vector3, callback: Callable = func() -> void: pass) -> void:
+func scale_node(node: Node, scale: Variant, callback: Callable = func() -> void: pass) -> void:
 	var tween: Tween = get_tree().create_tween()
 
 	tween.tween_property(node, "scale", scale, 0.2)
@@ -161,7 +166,7 @@ func update_money() -> void:
 	money_label.text = "$" + str(money)
 	update_island_availability()
 
-### FURNACE UI
+### FURNACE
 
 func find_item_by_name(_name: String) -> ItemData:
 	for item: ItemData in inventory_items:
@@ -169,3 +174,44 @@ func find_item_by_name(_name: String) -> ItemData:
 			return item
 
 	return null
+
+func register_furance_task(furnace: Furnace, _item: String, amount: int) -> void:
+	var item: ItemData = Global.find_item_by_name(_item)
+
+	furnace.update_ui(amount, item.texture)
+	furnace.timer.wait_time = item.craft_time
+	furnace.timer.timeout.connect(spit_item_from_furnace.bind(furnace, item, amount))
+	furnace.timer.start()
+
+func spit_item_from_furnace(furnace: Furnace, item: ItemData, amount: int) -> void:
+	furnace.runs += 1
+
+	if furnace.runs >= amount:
+		furnace.timer.stop()
+		furnace.busy = false
+
+	give_resources([
+		{
+			"resource": item,
+			"amount": 1
+		}
+	], furnace, 3, Vector3(-1,0,0))
+
+func give_resources(
+	resources: Array[Dictionary],
+	node: Node3D,
+	radius: float = 0.01,
+	add: Vector3 = Vector3.UP
+) -> void:
+	for item in resources:
+		var resource: ItemData = item.resource
+
+		var amount: int = item.amount
+
+		for i in range(0, amount):
+			var random_angle: float = randf_range(0, 2 * PI)
+			var pos: Vector3 = Vector3(radius * cos(random_angle), 1.0, radius * sin(random_angle))
+
+			pos += node.global_position + add
+
+			main.drop_item(resource, pos)

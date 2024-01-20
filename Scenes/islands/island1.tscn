@@ -22,6 +22,7 @@ description = "A handy tool for chopping down trees."
 stackable = false
 craft_resources = {}
 texture = SubResource("AtlasTexture_orsp7")
+craft_time = 0.0
 
 [sub_resource type="Resource" id="Resource_78twm"]
 script = ExtResource("4_pmduq")

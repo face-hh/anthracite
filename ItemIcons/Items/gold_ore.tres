@@ -16,3 +16,4 @@ description = "Can be melted into Gold!"
 stackable = true
 craft_resources = {}
 texture = SubResource("AtlasTexture_isjp6")
+craft_time = 3.0

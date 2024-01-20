@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d1rxrcb87h031"]
+[gd_scene load_steps=28 format=3 uid="uid://d1rxrcb87h031"]
 
 [ext_resource type="PackedScene" uid="uid://bgqycxtoitjp" path="res://Models/furnace.glb" id="1_4dwgg"]
 [ext_resource type="Script" path="res://Scripts/furnace.gd" id="1_hwii0"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b0ekmgsq2p4kd" path="res://Icons/Flame02.png" id="5_5dcn8"]
 [ext_resource type="Shader" uid="uid://wyppmkx54yxj" path="res://Shaders/simple_particles.tres" id="6_46ob4"]
 [ext_resource type="Texture2D" uid="uid://bskpwxde8itda" path="res://Icons/Flare00.PNG" id="7_xqj6w"]
+[ext_resource type="Texture2D" uid="uid://b7lrsalyp7q82" path="res://Icons/clockwise_progress.png" id="9_wcidj"]
+[ext_resource type="Script" path="res://Scripts/progress_bar_3d.gd" id="10_yrjrm"]
+[ext_resource type="Texture2D" uid="uid://b4gm817ljowei" path="res://ItemIcons/item_atlas.tres" id="11_b38ma"]
+[ext_resource type="FontFile" uid="uid://n8rj5bhvxmak" path="res://Fonts/VarelaRound-Regular.ttf" id="12_arc6k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kf1ou"]
 size = Vector3(2.625, 3.535, 2.89)
@@ -139,3 +143,48 @@ amount = 25
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_l3cdx")
 draw_pass_1 = SubResource("QuadMesh_rynf5")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.31, 0, 0, 0, 0.31, 0, 0, 0, 0.31, 0, 4.22, 0)
+billboard = 1
+texture = ExtResource("9_wcidj")
+script = ExtResource("10_yrjrm")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+size = Vector2i(562, 557)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Sprite3D/SubViewport"]
+offset_right = 561.0
+offset_bottom = 556.0
+fill_mode = 4
+texture_under = ExtResource("9_wcidj")
+texture_progress = ExtResource("9_wcidj")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.25098, 0.756863, 0.470588, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Sprite3D/SubViewport"]
+offset_left = 112.0
+offset_top = 40.0
+offset_right = 464.0
+offset_bottom = 482.0
+texture = ExtResource("11_b38ma")
+
+[node name="Amount" type="Label" parent="Sprite3D/SubViewport"]
+offset_left = 384.0
+offset_top = 392.0
+offset_right = 525.0
+offset_bottom = 539.0
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 38
+theme_override_constants/shadow_outline_size = 30
+theme_override_fonts/font = ExtResource("12_arc6k")
+theme_override_font_sizes/font_size = 121
+text = "x4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]

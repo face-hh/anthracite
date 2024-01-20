@@ -77,23 +77,6 @@ func _on_spreading_timeout(random: bool = true) -> void:
 
 	update_colors(infectable.get_node("model"), past_color, color)
 
-func give_resources(node: Model) -> void:
-	var resources: Array[Dictionary] = node.resources
-
-	for item in resources:
-		var resource: ItemData = item.resource
-
-		var amount: int = item.amount
-
-		for i in range(0, amount):
-			var radius: float = 0.01
-			var random_angle: float = randf_range(0, 2 * PI)
-			var pos: Vector3 = Vector3(radius * cos(random_angle), 1.0, radius * sin(random_angle))
-
-			pos += node.global_position + Vector3.UP
-
-			drop_item(resource, pos)
-
 ################
 # INVENTORY
 ################
@@ -101,8 +84,10 @@ func toggle_inventory_interface(external_inventory_owner: Box = null) -> void:
 	inventory_interface.visible = !inventory_interface.visible
 
 	if inventory_interface.visible:
+		Global.allow_actions = false
 		hot_bar_inventory.hide()
 	else:
+		Global.allow_actions = true
 		hot_bar_inventory.show()
 
 	if external_inventory_owner and inventory_interface.visible:
@@ -114,7 +99,6 @@ func drop_item(item_data: Variant, pos: Vector3 = character.get_drop_position())
 	var pick_up: PickUpType = PickUp.instantiate()
 
 	if item_data is ItemData:
-		print(item_data.texture)
 		pick_up.item_data = item_data
 	elif item_data is SlotData:
 		var slot_data: SlotData = item_data

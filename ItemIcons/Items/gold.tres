@@ -19,3 +19,4 @@ craft_resources = {
 "Gold Ore": 3
 }
 texture = SubResource("AtlasTexture_riau7")
+craft_time = 3.0

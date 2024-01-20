@@ -4,6 +4,7 @@ class_name PickUpType
 @export var item_data: ItemData
 
 @onready var sprite_3d: Sprite3D = $Sprite3D
+@onready var ray_cast_3d: RayCast3D = $RayCast3D
 
 var character: Character
 
@@ -28,6 +29,9 @@ func _physics_process(delta: float) -> void:
 	sprite_3d.rotate_y(delta)
 
 func _process(delta: float) -> void:
+	if !ray_cast_3d.is_colliding():
+		get_tree().create_timer(20).connect("timeout", queue_free)
+
 	if !player_in_radius: return
 
 	if !reachedPlayer:

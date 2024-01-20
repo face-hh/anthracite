@@ -45,18 +45,21 @@ func drop_single_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
 	else:
 		return null
 
-func use_slot_data(index: int) -> void:
+func use_slot_data(index: Variant, amount: int = 1, edible: bool = true) -> void:
+	if !edible:
+		index = find_item_by_name(str(index), true)
+
 	var slot_data: SlotData = slot_datas[index]
 
 	if !slot_data:
-		return
+		return print_debug("Couldn't find slot_data on given \"index\" in use_slot_data")
 
-	if slot_data.item_data is ItemDataConsumable:
-		slot_data.quantity -= 1
+	if slot_data.item_data is ItemDataConsumable or !edible:
+		slot_data.quantity -= amount
 		if slot_data.quantity < 1:
 			slot_datas[index] = null
 
-	Global.use_slot_data(slot_data)
+	if edible: Global.use_slot_data(slot_data)
 
 	inventory_updated.emit(self)
 
@@ -95,12 +98,14 @@ func find_by_item_data(item_data: ItemData) -> SlotData:
 
 	return x
 
-func find_item_by_name(_item: String) -> SlotData:
+func find_item_by_name(_item: String, only_index: bool = false) -> Variant:
 	for index in slot_datas.size():
 		if !slot_datas[index]:
 			continue
-		print(slot_datas[index].item_data.name, _item)
+
 		if slot_datas[index].item_data.name == _item:
+			if only_index: return index
+
 			return slot_datas[index]
 
 	return null

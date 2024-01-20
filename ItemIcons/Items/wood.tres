@@ -16,3 +16,4 @@ description = "Wood wood wood... great for building stuff!"
 stackable = true
 craft_resources = {}
 texture = SubResource("AtlasTexture_isjp6")
+craft_time = 0.0

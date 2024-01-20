@@ -1,12 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://crptevl0eefdw"]
+[gd_scene load_steps=11 format=3 uid="uid://crptevl0eefdw"]
 
 [ext_resource type="Script" path="res://Scripts/furance_ui.gd" id="1_8ov3e"]
 [ext_resource type="Texture2D" uid="uid://b148ragw1hdys" path="res://Icons/background.png" id="2_d6utk"]
 [ext_resource type="Script" path="res://Scripts/furnace_ui_item.gd" id="3_2jhin"]
 [ext_resource type="FontFile" uid="uid://n8rj5bhvxmak" path="res://Fonts/VarelaRound-Regular.ttf" id="3_txq7w"]
 [ext_resource type="Texture2D" uid="uid://ddlulpudd1rxx" path="res://Icons/button_active.png" id="4_f2yc8"]
-[ext_resource type="Texture2D" uid="uid://bhmtg5aeeo2fv" path="res://Icons/button_hover.png" id="5_0xwdl"]
-[ext_resource type="Texture2D" uid="uid://cy0io5lxll0cl" path="res://Icons/button_clicked.png" id="6_t4383"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tre83"]
 load_path = "res://.godot/imported/items.png-1f0067fc9f0235e26b07512e44f0d1a2.ctex"
@@ -17,24 +15,20 @@ region = Rect2(0, 0, 114, 143)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_be1bw"]
 texture = ExtResource("4_f2yc8")
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_747xi"]
-texture = ExtResource("5_0xwdl")
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t765h"]
+texture = ExtResource("4_f2yc8")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+modulate_color = Color(1, 1, 1, 0.678431)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kqbm7"]
-texture = ExtResource("6_t4383")
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_okkrp"]
 
 [node name="FurnaceUI" type="PanelContainer"]
 offset_right = 40.0
@@ -332,6 +326,7 @@ offset_top = 149.0
 offset_right = 233.0
 offset_bottom = 199.0
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/h_separation = 13
@@ -339,8 +334,10 @@ theme_override_constants/icon_max_width = -10
 theme_override_fonts/font = ExtResource("3_txq7w")
 theme_override_font_sizes/font_size = 41
 theme_override_styles/normal = SubResource("StyleBoxTexture_be1bw")
-theme_override_styles/hover = SubResource("StyleBoxTexture_747xi")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_kqbm7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_t765h")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_okkrp")
 text = "CRAFT"
 
 [node name="Control3" type="Control" parent="MarginContainer/HBoxContainer2/VBoxContainer"]
@@ -391,3 +388,4 @@ vertical_alignment = 1
 [connection signal="gui_input" from="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect2" to="." method="_on_texture_rect_2_gui_input"]
 [connection signal="gui_input" from="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect3" to="." method="_on_texture_rect_3_gui_input"]
 [connection signal="gui_input" from="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect4" to="." method="_on_texture_rect_4_gui_input"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer2/VBoxContainer/Control/Button" to="." method="_on_button_pressed"]

@@ -14,6 +14,8 @@ var minFov := 45
 var fovSmooth := 0.95
 
 func handle_zoom() -> void:
+	if !Global.allow_zoom: return
+
 	if Input.is_action_just_pressed("zoom_in"):
 		desiredFov = desiredFov - fovStep
 	elif Input.is_action_just_pressed("zoom_out"):

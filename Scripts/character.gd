@@ -7,8 +7,6 @@ class_name Character
 @export var internal_anim : AnimationPlayer
 @export var inventory_data: InventoryData
 
-
-
 @onready var anim : AnimationPlayer = model.get_node("AnimationPlayer")
 @onready var working_material: Resource = load("res://Models/Material.001 Base Color.001.png");
 @onready var idle_material: Resource = load("res://Models/survivor_Material.png");
@@ -50,6 +48,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+	if !Global.allow_actions: return
 
 	var input_dir := Input.get_vector("ui_right", "ui_left", "ui_down", "ui_up")
 
@@ -85,12 +84,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func handle_input() -> void:
-	if Input.is_action_just_pressed("ui_click") and !main.inventory_interface.visible:
+	if Input.is_action_just_pressed("ui_click") and Global.allow_actions:
 		handle_click()
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
-	if Input.is_action_just_pressed("interact") and !main.inventory_interface.visible:
-		print('OK!')
+	if Input.is_action_just_pressed("interact"):
 		interact()
 
 func play_anim(anim_name: String) -> void:
@@ -151,7 +149,7 @@ func handle_click() -> void:
 
 	entity.take_damage(tool_info.damage)
 
-	var binded: Callable = main.give_resources.bind(entity)
+	var binded: Callable = Global.give_resources.bind(entity.resources, entity)
 
 	if !entity.death.is_connected(binded):
 		entity.death.connect(binded)
@@ -184,6 +182,7 @@ func squish(node: Node3D) -> void:
 
 func find_closest(skip_check: Callable = func(_body: Node3D) -> bool: return true) -> Node3D:
 	var closest: Node3D
+
 	for body: Node3D in close_items:
 		if !skip_check.bind(body).call():
 			continue
@@ -191,6 +190,7 @@ func find_closest(skip_check: Callable = func(_body: Node3D) -> bool: return tru
 		if !closest:
 			closest = body
 			continue
+
 		var is_closer: bool = global_position.distance_to(closest.global_position) > global_position.distance_to(body.global_position)
 
 		if is_closer:

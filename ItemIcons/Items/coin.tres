@@ -18,3 +18,4 @@ craft_resources = {
 "Gold": 10
 }
 texture = SubResource("AtlasTexture_xjntm")
+craft_time = 5.0

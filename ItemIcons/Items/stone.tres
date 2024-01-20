@@ -16,3 +16,4 @@ description = "Used in recipes"
 stackable = true
 craft_resources = {}
 texture = SubResource("AtlasTexture_p77b0")
+craft_time = 0.0

@@ -26,4 +26,7 @@ shape = SubResource("SphereShape3D_mwu82")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_t4xpe")
 
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -8.15, 0)
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

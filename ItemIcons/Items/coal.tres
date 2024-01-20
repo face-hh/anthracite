@@ -18,3 +18,4 @@ craft_resources = {
 "Wood": 2
 }
 texture = SubResource("AtlasTexture_x7nqp")
+craft_time = 2.0

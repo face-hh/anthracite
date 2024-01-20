@@ -1,10 +1,12 @@
 extends PanelContainer
+class_name FurnaceUI
 
 @export var character: Character
 
 @onready var owned: Label = $MarginContainer/HBoxContainer2/VBoxContainer/Control3/Owned
 @onready var resource_name: Label = $MarginContainer/HBoxContainer2/VBoxContainer/Control4/ResourceName
 @onready var texture: TextureRect = $MarginContainer/HBoxContainer2/VBoxContainer/Control2/Control/TextureRect
+@onready var button: Button = $MarginContainer/HBoxContainer2/VBoxContainer/Control/Button
 
 @onready var required_item_icon_1: TextureRect = $MarginContainer/HBoxContainer2/VBoxContainer/Control5/VBoxContainer/Requirement1/Control/RequiredItemIcon1
 @onready var required_item_name_1: Label = $MarginContainer/HBoxContainer2/VBoxContainer/Control5/VBoxContainer/Requirement1/RequiredItemName1
@@ -35,12 +37,20 @@ extends PanelContainer
 @onready var texture_rect_3: FurnaceItem = $MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect3
 @onready var texture_rect_4: FurnaceItem = $MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect4
 
+
+var substract := {}
+
+var current_item: Variant = null
+
 func _ready() -> void:
+	current_item = texture_rect_1
+
 	replace_item(texture_rect_1, "Coal")
 	replace_item(texture_rect_2, "Steel")
 	replace_item(texture_rect_3, "Gold")
 
-	select_item(texture_rect_1)
+func _reload(_texture: Variant = texture_rect_1) -> void:
+	select_item(_texture)
 
 func replace_item(texture_rect: FurnaceItem, _item: String) -> void:
 	var item: ItemData = Global.find_item_by_name(_item)
@@ -55,9 +65,13 @@ func manage_item_selection(_event: InputEvent, item: FurnaceItem) -> void:
 
 	if !(event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true): return
 
+	current_item = item
+
 	select_item(item)
 
-func select_item(_item: FurnaceItem) -> void:
+func select_item(__item: Variant) -> void:
+	var _item: FurnaceItem = __item
+
 	for requirement in requirements:
 		requirement.visible = false
 
@@ -68,6 +82,10 @@ func select_item(_item: FurnaceItem) -> void:
 	texture.texture = item.texture
 
 	var i := 0
+	var craftable := true
+
+	substract = item.craft_resources
+
 	for key: String in item.craft_resources:
 		var value: int = item.craft_resources[key]
 
@@ -76,13 +94,22 @@ func select_item(_item: FurnaceItem) -> void:
 		var required_texture: TextureRect = required_items[i][0]
 		var required_name: Label = required_items[i][1]
 		var required_cost: Label = required_items[i][2]
+		var current: int = get_quantity_in_inventory(inventory, key)
 
 		required_texture.texture = Global.find_item_by_name(key).texture
 		required_name.text = key.to_upper()
-		required_cost.text = "%s/%s" % [get_quantity_in_inventory(inventory, key), value]
+		required_cost.text = "%s/%s" % [current, value]
 		i += 1
 
+		if current <= value:
+			craftable = false
+
 	owned.text = "OWNED: %s" % str(get_quantity_in_inventory(inventory, _item.item_name))
+
+	button.disabled = !craftable
+
+	if !craftable: button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	else: button.mouse_filter = Control.MOUSE_FILTER_STOP
 
 func get_quantity_in_inventory(inventory: InventoryData, _item: String) -> int:
 	var slot_in_inv: SlotData = inventory.find_item_by_name(_item)
@@ -102,3 +129,20 @@ func _on_texture_rect_3_gui_input(event: InputEvent) -> void:
 
 func _on_texture_rect_4_gui_input(event: InputEvent) -> void:
 	manage_item_selection(event, texture_rect_4)
+
+
+func _on_button_pressed() -> void:
+	var furnace: Furnace = character.find_closest(func(body: Node3D) -> bool:
+		return "furnace" in body.name
+	)
+
+	for key: String in substract:
+		var value: int = substract[key]
+		var inventory: InventoryData = character.inventory_data
+
+		inventory.use_slot_data(key, value, false)
+	_reload(current_item)
+
+	furnace.busy = true
+
+	Global.register_furance_task(furnace, (current_item as FurnaceItem).item_name, 1) # CHANGE THIS LATER
