@@ -244,7 +244,8 @@ text = "0$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FurnaceUI" parent="UI" instance=ExtResource("19_gd38o")]
+[node name="FurnaceUI" parent="UI" node_paths=PackedStringArray("character") instance=ExtResource("19_gd38o")]
+visible = false
 modulate = Color(1, 1, 1, 0.721569)
 anchors_preset = 8
 anchor_left = 0.5
@@ -257,6 +258,7 @@ offset_right = -70.0
 offset_bottom = 203.0
 grow_horizontal = 2
 grow_vertical = 2
+character = NodePath("../../Character")
 
 [node name="Misc" type="Node3D" parent="."]
 

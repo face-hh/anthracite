@@ -15,6 +15,7 @@ name = "Gold"
 description = "Used in recipes"
 stackable = true
 craft_resources = {
+"Coal": 2,
 "Gold Ore": 3
 }
 texture = SubResource("AtlasTexture_riau7")

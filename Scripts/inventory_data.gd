@@ -94,3 +94,13 @@ func find_by_item_data(item_data: ItemData) -> SlotData:
 		x.item_data = item_data
 
 	return x
+
+func find_item_by_name(_item: String) -> SlotData:
+	for index in slot_datas.size():
+		if !slot_datas[index]:
+			continue
+		print(slot_datas[index].item_data.name, _item)
+		if slot_datas[index].item_data.name == _item:
+			return slot_datas[index]
+
+	return null

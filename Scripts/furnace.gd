@@ -1,5 +1,7 @@
 extends Model
 class_name Furnace
 
+@onready var ui: PanelContainer = $"../../../../UI/FurnaceUI"
+
 func player_interact() -> void:
-	print('furance hi')
+	ui.visible = !ui.visible

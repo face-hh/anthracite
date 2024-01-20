@@ -15,6 +15,7 @@ name = "Steel"
 description = "Used in recipes"
 stackable = true
 craft_resources = {
+"Coal": 2,
 "Steel Ore": 3
 }
 texture = SubResource("AtlasTexture_agj8x")
