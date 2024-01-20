@@ -1,0 +1,237 @@
+[gd_scene load_steps=13 format=3 uid="uid://crptevl0eefdw"]
+
+[ext_resource type="Script" path="res://Scripts/furance_ui.gd" id="1_8ov3e"]
+[ext_resource type="Texture2D" uid="uid://b148ragw1hdys" path="res://Icons/background.png" id="2_d6utk"]
+[ext_resource type="Script" path="res://Scripts/furnace_ui_item.gd" id="3_2jhin"]
+[ext_resource type="FontFile" uid="uid://n8rj5bhvxmak" path="res://Fonts/VarelaRound-Regular.ttf" id="3_txq7w"]
+[ext_resource type="Texture2D" uid="uid://ddlulpudd1rxx" path="res://Icons/button_active.png" id="4_f2yc8"]
+[ext_resource type="Texture2D" uid="uid://bhmtg5aeeo2fv" path="res://Icons/button_hover.png" id="5_0xwdl"]
+[ext_resource type="Texture2D" uid="uid://cy0io5lxll0cl" path="res://Icons/button_clicked.png" id="6_t4383"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tre83"]
+load_path = "res://.godot/imported/items.png-1f0067fc9f0235e26b07512e44f0d1a2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5ovv"]
+atlas = SubResource("CompressedTexture2D_tre83")
+region = Rect2(0, 0, 114, 143)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_be1bw"]
+texture = ExtResource("4_f2yc8")
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_747xi"]
+texture = ExtResource("5_0xwdl")
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kqbm7"]
+texture = ExtResource("6_t4383")
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="FurnaceUI" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8ov3e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Node2D" type="Node2D" parent="MarginContainer"]
+position = Vector2(8, 8)
+rotation = 1.5708
+scale = Vector2(3.965, 3.965)
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Node2D"]
+offset_left = -1.39739
+offset_top = -113.188
+offset_right = 112.603
+offset_bottom = 0.812225
+texture = ExtResource("2_d6utk")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(150, 439.67)
+layout_mode = 2
+horizontal_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_j5ovv")
+stretch_mode = 2
+script = ExtResource("3_2jhin")
+item_name = "Coal"
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_j5ovv")
+stretch_mode = 2
+script = ExtResource("3_2jhin")
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_j5ovv")
+stretch_mode = 2
+script = ExtResource("3_2jhin")
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_j5ovv")
+stretch_mode = 2
+script = ExtResource("3_2jhin")
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_j5ovv")
+stretch_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_j5ovv")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control2"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 14.0
+offset_top = 36.0
+offset_right = 224.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control2/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.845
+offset_top = -189.0
+offset_right = 97.155
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_j5ovv")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control2"]
+layout_mode = 2
+offset_left = 46.0
+offset_top = 7.0
+offset_right = 256.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+
+[node name="ItemName" type="Label" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 13
+theme_override_constants/shadow_outline_size = -10
+theme_override_fonts/font = ExtResource("3_txq7w")
+theme_override_font_sizes/font_size = 31
+text = "WOOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 13
+theme_override_constants/shadow_outline_size = -10
+theme_override_fonts/font = ExtResource("3_txq7w")
+theme_override_font_sizes/font_size = 31
+text = "24/5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 78.0
+offset_top = 67.0
+offset_right = 217.0
+offset_bottom = 117.0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 13
+theme_override_constants/icon_max_width = -10
+theme_override_fonts/font = ExtResource("3_txq7w")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_747xi")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kqbm7")
+text = "CRAFT"
+
+[node name="Control3" type="Control" parent="MarginContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Owned" type="Label" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control3"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 185.0
+offset_right = 344.0
+offset_bottom = 223.0
+scale = Vector2(0.64, 0.64)
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 13
+theme_override_constants/shadow_outline_size = -10
+theme_override_fonts/font = ExtResource("3_txq7w")
+theme_override_font_sizes/font_size = 31
+text = "OWNED: 43"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect" to="." method="_on_texture_rect_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect2" to="." method="_on_texture_rect_2_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect3" to="." method="_on_texture_rect_3_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect4" to="." method="_on_texture_rect_4_gui_input"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://c02r3pntikfwg"]
+
+[ext_resource type="Script" path="res://Scripts/esc_menu_cell.gd" id="1_iultw"]
+[ext_resource type="Texture2D" uid="uid://fjwtvf85a5q7" path="res://Icons/gear.png" id="2_7cut8"]
+[ext_resource type="Texture2D" uid="uid://b148ragw1hdys" path="res://Icons/background.png" id="2_vhjug"]
+[ext_resource type="FontFile" uid="uid://n8rj5bhvxmak" path="res://Fonts/VarelaRound-Regular.ttf" id="3_gtfm0"]
+
+[node name="SettingsCell" type="PanelContainer"]
+process_mode = 3
+offset_right = 1089.0
+offset_bottom = 337.0
+script = ExtResource("1_iultw")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_vhjug")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_7cut8")
+
+[node name="QuantityLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 15
+theme_override_constants/outline_size = 53
+theme_override_constants/shadow_outline_size = 25
+theme_override_fonts/font = ExtResource("3_gtfm0")
+theme_override_font_sizes/font_size = 136
+text = "Buy Island"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="Button"]
+layout_mode = 0
+offset_right = 1089.0
+offset_bottom = 334.0
+mouse_default_cursor_shape = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="gui_input" from="Button" to="." method="_on_button_gui_input"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button/TextureButton" to="." method="_on_texture_button_pressed"]

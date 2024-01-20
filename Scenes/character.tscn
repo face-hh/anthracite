@@ -1,0 +1,269 @@
+[gd_scene load_steps=11 format=3 uid="uid://dna472xax2iv1"]
+
+[ext_resource type="Script" path="res://Scripts/character.gd" id="1_flrax"]
+[ext_resource type="PackedScene" uid="uid://gi74usssi3l6" path="res://Models/survivor.glb" id="1_jj7ev"]
+[ext_resource type="PackedScene" uid="uid://b7vfituchvleo" path="res://Models/pickaxe.glb" id="3_hxtmc"]
+[ext_resource type="PackedScene" uid="uid://cfkwkhbl63n30" path="res://Models/axe.glb" id="4_2jsfp"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wpcpl"]
+height = 2.235
+radius = 0.715
+
+[sub_resource type="Animation" id="Animation_ji6b2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapons/axe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.517, 1.354, -0.718)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/axe:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.68424, 1.88496, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapons/axe:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.05, 0.05, 0.05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weapons/axe:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Weapons/pickaxe:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Weapons/pickaxe:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.023, 2.192, -0.815)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Weapons/pickaxe:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.261799, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Weapons/pickaxe:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.065, 0.065, 0.065)]
+}
+
+[sub_resource type="Animation" id="Animation_uh41i"]
+resource_name = "axe_attack"
+length = 0.48
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapons/axe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.21, 0.31, 0.41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.517, 1.354, -0.718), Vector3(0.632, 1.229, -0.388), Vector3(0.207, 1.229, -0.688), Vector3(-0.431, 1.229, -0.633), Vector3(-0.598, 1.229, -0.573)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/axe:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.21, 0.31),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.68424, 0.443314, 0), Vector3(2.63545, 0.443314, 0), Vector3(2.63545, 1.39452, 0), Vector3(2.63545, 2.8448, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapons/axe:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.21, 0.41, 0.46),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.005, 0.005, 0.005), Vector3(0.11, 0.11, 0.11), Vector3(0.11, 0.11, 0.11), Vector3(0.11, 0.11, 0.11), Vector3(0.005, 0.005, 0.005)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weapons/axe:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.47),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_sfbki"]
+resource_name = "pickaxe_attack"
+length = 0.36
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapons/pickaxe:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/pickaxe:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.21, 0.31),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.023, 2.517, -0.515), Vector3(0.023, 2.192, -1.085), Vector3(0.023, 1.612, -1.085), Vector3(0.023, 1.032, -0.915)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapons/pickaxe:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.21, 0.31),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.261799, 0, 0), Vector3(-0.261799, 0, 0), Vector3(-1.80642, 0, 0), Vector3(-2.35619, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weapons/pickaxe:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.21, 0.31, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.065, 0.065, 0.065), Vector3(0.405, 0.405, 0.405), Vector3(0.405, 0.405, 0.405), Vector3(0.405, 0.405, 0.405), Vector3(0.055, 0.055, 0.055)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m287l"]
+_data = {
+"RESET": SubResource("Animation_ji6b2"),
+"axe_attack": SubResource("Animation_uh41i"),
+"pickaxe_attack": SubResource("Animation_sfbki")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wbjhx"]
+size = Vector3(1.955, 1.995, 2.18)
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("model", "weapons", "internal_anim")]
+collision_layer = 3
+script = ExtResource("1_flrax")
+model = NodePath("survivor")
+weapons = NodePath("Weapons")
+internal_anim = NodePath("AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.325, 0)
+shape = SubResource("CylinderShape3D_wpcpl")
+
+[node name="survivor" parent="." instance=ExtResource("1_jj7ev")]
+transform = Transform3D(0.485, 0, 0, 0, 0.485, 0, 0, 0, 0.485, 0, 0.505, 0)
+
+[node name="Camera3D" type="Camera3D" parent="survivor"]
+transform = Transform3D(2.06186, 0, 0, 0, 2.06186, 0, 0, 0, 2.06186, 0, 2.60139, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="survivor"]
+transform = Transform3D(2.06186, 0, 0, 0, 2.06186, 0, 0, 0, 2.06186, 0, 2.22456, 0)
+target_position = Vector3(-0.035, -33.065, -5.555)
+
+[node name="Weapons" type="Node3D" parent="."]
+
+[node name="pickaxe" parent="Weapons" instance=ExtResource("3_hxtmc")]
+transform = Transform3D(0.065, 0, 0, 0, 0.0627852, 0.0168232, 0, -0.0168232, 0.0627852, 0.023, 2.192, -0.815)
+visible = false
+
+[node name="axe" parent="Weapons" instance=ExtResource("4_2jsfp")]
+transform = Transform3D(-0.0154511, 0.0472471, -0.005383, 0, -0.00566002, -0.0496786, -0.0475528, -0.0153517, 0.00174907, 0.517, 1.354, -0.718)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m287l")
+}
+
+[node name="AttackHitboxArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.595, 0)
+shape = SubResource("BoxShape3D_wbjhx")
+
+[connection signal="body_entered" from="AttackHitboxArea" to="." method="_on_attack_hitbox_area_body_entered"]
+[connection signal="body_exited" from="AttackHitboxArea" to="." method="_on_attack_hitbox_area_body_exited"]

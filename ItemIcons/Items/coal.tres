@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b853yreilb82d"]
+
+[ext_resource type="Script" path="res://Scripts/item_data.gd" id="1_g0wpq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oomue"]
+load_path = "res://.godot/imported/items.png-1f0067fc9f0235e26b07512e44f0d1a2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7nqp"]
+atlas = SubResource("CompressedTexture2D_oomue")
+region = Rect2(0, 143, 114, 143)
+
+[resource]
+script = ExtResource("1_g0wpq")
+name = "Coal"
+description = "Used in recipes"
+stackable = true
+craft_resources = {
+"Wood": 2
+}
+texture = SubResource("AtlasTexture_x7nqp")

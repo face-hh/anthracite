@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr2rq631hc0r2"]
+
+[ext_resource type="Script" path="res://Scripts/model.gd" id="1_22cwy"]
+[ext_resource type="PackedScene" uid="uid://c80f04auuqr4r" path="res://Models/rock.glb" id="1_brgol"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8d7fu"]
+radius = 1.28
+height = 3.59
+
+[node name="rock" type="StaticBody3D"]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, 0, 1.52, 0)
+script = ExtResource("1_22cwy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376971, 1.19209e-07, 0)
+shape = SubResource("CapsuleShape3D_8d7fu")
+
+[node name="model" parent="." instance=ExtResource("1_brgol")]

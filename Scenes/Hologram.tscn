@@ -1,0 +1,175 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt7hsack8bh6v"]
+
+[ext_resource type="Script" path="res://Scripts/Hologram.gd" id="1_0ptbn"]
+[ext_resource type="PackedScene" uid="uid://cxscb2yj506db" path="res://Models/block.glb" id="1_6dwb4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8isnw"]
+size = Vector3(15.265, 1.545, 14.36)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_0ptbn")
+
+[node name="blocks" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.87, 3)
+
+[node name="block5" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 3)
+
+[node name="block6" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 3)
+
+[node name="block7" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 3)
+
+[node name="block8" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 1)
+
+[node name="block9" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
+
+[node name="block10" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="block42" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="block43" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+
+[node name="block44" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3)
+
+[node name="block11" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+
+[node name="block12" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
+
+[node name="block13" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
+
+[node name="block14" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -9)
+
+[node name="block51" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)
+
+[node name="block52" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
+
+[node name="block53" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -7)
+
+[node name="block15" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -9)
+
+[node name="block16" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -9)
+
+[node name="block17" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -7)
+
+[node name="block18" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -5)
+
+[node name="block48" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -7)
+
+[node name="block49" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -9)
+
+[node name="block50" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -9)
+
+[node name="block19" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -3)
+
+[node name="block20" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -1)
+
+[node name="block21" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 1)
+
+[node name="block45" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 3)
+
+[node name="block46" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 3)
+
+[node name="block47" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 1)
+
+[node name="block22" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -1)
+
+[node name="block23" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -3)
+
+[node name="block24" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -5)
+
+[node name="block25" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -7)
+
+[node name="block26" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -7)
+
+[node name="block27" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7)
+
+[node name="block28" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -5)
+
+[node name="block29" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
+
+[node name="block30" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -1)
+
+[node name="block31" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)
+
+[node name="block32" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1)
+
+[node name="block33" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 1)
+
+[node name="block34" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -1)
+
+[node name="block35" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -3)
+
+[node name="block36" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -5)
+
+[node name="block37" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -5)
+
+[node name="block38" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -5)
+
+[node name="block39" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
+
+[node name="block40" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -3)
+
+[node name="block41" parent="blocks" instance=ExtResource("1_6dwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.93, -0.41, 0)
+shape = SubResource("BoxShape3D_8isnw")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+billboard = 1
+text = "34$"
+font_size = 252
+outline_size = 127
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
