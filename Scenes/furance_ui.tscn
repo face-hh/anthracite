@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crptevl0eefdw"]
+[gd_scene load_steps=12 format=3 uid="uid://crptevl0eefdw"]
 
 [ext_resource type="Script" path="res://Scripts/furance_ui.gd" id="1_8ov3e"]
 [ext_resource type="Texture2D" uid="uid://b148ragw1hdys" path="res://Icons/background.png" id="2_d6utk"]
@@ -29,6 +29,13 @@ expand_margin_bottom = 2.0
 modulate_color = Color(1, 1, 1, 0.678431)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_okkrp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ejf4o"]
+texture = ExtResource("4_f2yc8")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="FurnaceUI" type="PanelContainer"]
 offset_right = 40.0
@@ -316,14 +323,14 @@ stretch_mode = 2
 [node name="Control" type="Control" parent="MarginContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control"]
+[node name="Craft" type="Button" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 94.0
+offset_left = 118.0
 offset_top = 149.0
-offset_right = 233.0
+offset_right = 257.0
 offset_bottom = 199.0
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -339,6 +346,99 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_be1bw")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_t765h")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_okkrp")
 text = "CRAFT"
+
+[node name="Min" type="Button" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = 197.0
+offset_right = 145.0
+offset_bottom = 247.0
+grow_vertical = 2
+scale = Vector2(0.575, 0.575)
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 13
+theme_override_constants/icon_max_width = -10
+theme_override_fonts/font = ExtResource("3_txq7w")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_ejf4o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_t765h")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_okkrp")
+text = "MIN"
+
+[node name="Max" type="Button" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = 157.0
+offset_right = 145.0
+offset_bottom = 207.0
+grow_vertical = 2
+scale = Vector2(0.575, 0.575)
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 13
+theme_override_constants/icon_max_width = -10
+theme_override_fonts/font = ExtResource("3_txq7w")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_t765h")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_okkrp")
+text = "MAX"
+
+[node name="Plus" type="Button" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = 117.0
+offset_right = 145.0
+offset_bottom = 167.0
+grow_vertical = 2
+scale = Vector2(0.575, 0.575)
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 13
+theme_override_constants/icon_max_width = -10
+theme_override_fonts/font = ExtResource("3_txq7w")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_be1bw")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_t765h")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_okkrp")
+text = "+"
+
+[node name="Amount" type="Label" parent="MarginContainer/HBoxContainer2/VBoxContainer/Control"]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 157.0
+offset_right = 333.0
+offset_bottom = 195.0
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 13
+theme_override_constants/shadow_outline_size = -10
+theme_override_fonts/font = ExtResource("3_txq7w")
+theme_override_font_sizes/font_size = 31
+text = "x0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control3" type="Control" parent="MarginContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
@@ -388,4 +488,7 @@ vertical_alignment = 1
 [connection signal="gui_input" from="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect2" to="." method="_on_texture_rect_2_gui_input"]
 [connection signal="gui_input" from="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect3" to="." method="_on_texture_rect_3_gui_input"]
 [connection signal="gui_input" from="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect4" to="." method="_on_texture_rect_4_gui_input"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer2/VBoxContainer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer2/VBoxContainer/Control/Craft" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer2/VBoxContainer/Control/Min" to="." method="_on_min"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer2/VBoxContainer/Control/Max" to="." method="_on_max"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer2/VBoxContainer/Control/Plus" to="." method="_on_plus"]

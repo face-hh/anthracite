@@ -1,0 +1,14 @@
+[gd_scene load_steps=9 format=3 uid="uid://tcc8ayih44ko"]
+
+[ext_resource type="Script" path="res://addons/quick_audio/SFXDemo.gd" id="1_akvs6"]
+[ext_resource type="AudioStream" uid="uid://c3n7k0d4hx6y" path="res://SFX/pickupCoin.wav" id="6_ye6g0"]
+[ext_resource type="AudioStream" uid="uid://b33i8bqmupsqe" path="res://SFX/Select 1.wav" id="18_fyg7p"]
+[ext_resource type="AudioStream" uid="uid://b04na8m1o51yx" path="res://SFX/Confirm 1.wav" id="19_se44p"]
+[ext_resource type="AudioStream" uid="uid://cuwffw3oxjreg" path="res://SFX/Hit damage 1.wav" id="20_osri0"]
+[ext_resource type="AudioStream" uid="uid://cd5sy4je6e0tf" path="res://SFX/hitHurt.wav" id="21_22ap3"]
+[ext_resource type="AudioStream" uid="uid://byuma6qtqlw2f" path="res://SFX/01_chest_open_1.wav" id="23_6o02e"]
+[ext_resource type="AudioStream" uid="uid://cq2vpsixqa30j" path="res://SFX/02_chest_close_1.wav" id="24_lij42"]
+
+[node name="SFX" type="Node3D"]
+script = ExtResource("1_akvs6")
+sounds = Array[AudioStream]([ExtResource("18_fyg7p"), ExtResource("19_se44p"), ExtResource("20_osri0"), ExtResource("21_22ap3"), ExtResource("6_ye6g0"), ExtResource("23_6o02e"), ExtResource("24_lij42")])

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cuwffw3oxjreg"
+path="res://.godot/imported/Hit damage 1.wav-0d4961194ace865f77e8a743ce914565.sample"
+
+[deps]
+
+source_file="res://SFX/Hit damage 1.wav"
+dest_files=["res://.godot/imported/Hit damage 1.wav-0d4961194ace865f77e8a743ce914565.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

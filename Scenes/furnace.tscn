@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d1rxrcb87h031"]
+[gd_scene load_steps=29 format=3 uid="uid://d1rxrcb87h031"]
 
 [ext_resource type="PackedScene" uid="uid://bgqycxtoitjp" path="res://Models/furnace.glb" id="1_4dwgg"]
 [ext_resource type="Script" path="res://Scripts/furnace.gd" id="1_hwii0"]
@@ -99,6 +99,8 @@ turbulence_noise_scale = 5.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_rynf5"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hoa0o"]
+
 [node name="furnace" type="StaticBody3D"]
 transform = Transform3D(0.63, 0, 0, 0, 0.63, 0, 0, 0, 0.63, 0, 0, 0)
 script = ExtResource("1_hwii0")
@@ -188,3 +190,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5873, 0, -1.5873)
+shape = SubResource("BoxShape3D_hoa0o")

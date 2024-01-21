@@ -19,4 +19,4 @@ craft_resources = {
 "Steel Ore": 3
 }
 texture = SubResource("AtlasTexture_agj8x")
-craft_time = 0.0
+craft_time = 4.0

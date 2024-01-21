@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
 
 			var slot_data: SlotData = character.inventory_data.find_by_item_data(item_data)
 			if character.inventory_data.pick_up_slot_data(slot_data):
+				Global.sfx.play_sound("pickup", true)
 				queue_free()
 
 

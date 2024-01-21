@@ -6,7 +6,6 @@ class_name FurnaceUI
 @onready var owned: Label = $MarginContainer/HBoxContainer2/VBoxContainer/Control3/Owned
 @onready var resource_name: Label = $MarginContainer/HBoxContainer2/VBoxContainer/Control4/ResourceName
 @onready var texture: TextureRect = $MarginContainer/HBoxContainer2/VBoxContainer/Control2/Control/TextureRect
-@onready var button: Button = $MarginContainer/HBoxContainer2/VBoxContainer/Control/Button
 
 @onready var required_item_icon_1: TextureRect = $MarginContainer/HBoxContainer2/VBoxContainer/Control5/VBoxContainer/Requirement1/Control/RequiredItemIcon1
 @onready var required_item_name_1: Label = $MarginContainer/HBoxContainer2/VBoxContainer/Control5/VBoxContainer/Requirement1/RequiredItemName1
@@ -37,8 +36,12 @@ class_name FurnaceUI
 @onready var texture_rect_3: FurnaceItem = $MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect3
 @onready var texture_rect_4: FurnaceItem = $MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/TextureRect4
 
+@onready var button: Button = $MarginContainer/HBoxContainer2/VBoxContainer/Control/Craft
+@onready var amount: Label = $MarginContainer/HBoxContainer2/VBoxContainer/Control/Amount
+
 
 var substract := {}
+var craft_times := 1
 
 var current_item: Variant = null
 
@@ -49,7 +52,11 @@ func _ready() -> void:
 	replace_item(texture_rect_2, "Steel")
 	replace_item(texture_rect_3, "Gold")
 
-func _reload(_texture: Variant = texture_rect_1) -> void:
+func _reload(_texture: Variant) -> void:
+	if !_texture:
+		_texture = texture_rect_1
+		current_item = _texture
+
 	select_item(_texture)
 
 func replace_item(texture_rect: FurnaceItem, _item: String) -> void:
@@ -89,6 +96,8 @@ func select_item(__item: Variant) -> void:
 	for key: String in item.craft_resources:
 		var value: int = item.craft_resources[key]
 
+		value = value * craft_times
+
 		requirements[i].visible = true
 
 		var required_texture: TextureRect = required_items[i][0]
@@ -101,10 +110,11 @@ func select_item(__item: Variant) -> void:
 		required_cost.text = "%s/%s" % [current, value]
 		i += 1
 
-		if current <= value:
+		if current < value:
 			craftable = false
 
 	owned.text = "OWNED: %s" % str(get_quantity_in_inventory(inventory, _item.item_name))
+	amount.text = "x%s" % craft_times
 
 	button.disabled = !craftable
 
@@ -140,9 +150,40 @@ func _on_button_pressed() -> void:
 		var value: int = substract[key]
 		var inventory: InventoryData = character.inventory_data
 
-		inventory.use_slot_data(key, value, false)
+		inventory.use_slot_data(key, value * craft_times, false)
 	_reload(current_item)
 
 	furnace.busy = true
 
-	Global.register_furance_task(furnace, (current_item as FurnaceItem).item_name, 1) # CHANGE THIS LATER
+	Global.register_furance_task(furnace, (current_item as FurnaceItem).item_name, craft_times) # CHANGE THIS LATER
+
+
+func _on_min() -> void:
+	craft_times = 1
+	_reload(current_item)
+
+func _on_max() -> void:
+	var max_craft_times: int = 3  # Set a default value, adjust as needed
+
+	for key: String in substract:
+		var value: int = substract[key]
+		var inventory: InventoryData = character.inventory_data
+		var item: SlotData = inventory.find_item_by_name(key)
+
+		if item and value > 0:
+			var available_craft_times: int = item.quantity / value
+			max_craft_times = min(max_craft_times, available_craft_times)
+
+	if max_craft_times == 0:
+		# my son will do item duplicating glitch in Anthracite
+		# my honest reaction:
+		craft_times = 1
+	else:
+		craft_times = max_craft_times
+
+	_reload(current_item)
+
+
+func _on_plus() -> void:
+	craft_times += 1
+	_reload(current_item)

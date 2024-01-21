@@ -27,6 +27,8 @@ var allow_actions: bool = true
 @onready var island_3: Node3D = $/root/main/holograms/island3
 @onready var island_4: Node3D = $/root/main/holograms/island4
 
+@onready var sfx: SFX = $/root/main/SFX
+
 const ISLAND_1 = "res://Scenes/islands/island1.tscn"
 
 var purchaseable_islands: Array[String] = [ISLAND_1]
@@ -180,38 +182,55 @@ func register_furance_task(furnace: Furnace, _item: String, amount: int) -> void
 
 	furnace.update_ui(amount, item.texture)
 	furnace.timer.wait_time = item.craft_time
-	furnace.timer.timeout.connect(spit_item_from_furnace.bind(furnace, item, amount))
+
+	furnace.turn_vfx(true)
+
+	if !furnace.timer.is_connected("timeout", spit_item_from_furnace):
+		furnace.timer.timeout.connect(spit_item_from_furnace.bind(furnace, item, amount))
+
 	furnace.timer.start()
 
 func spit_item_from_furnace(furnace: Furnace, item: ItemData, amount: int) -> void:
 	furnace.runs += 1
+	furnace.update_ui(amount - furnace.runs, item.texture)
 
 	if furnace.runs >= amount:
 		furnace.timer.stop()
 		furnace.busy = false
+		furnace.runs = 0
 
 	give_resources([
 		{
 			"resource": item,
 			"amount": 1
 		}
-	], furnace, 3, Vector3(-1,0,0))
+	], furnace.spawn_area, 0.01, Vector3(0,0,0))
 
 func give_resources(
 	resources: Array[Dictionary],
-	node: Node3D,
+	node: Variant,
 	radius: float = 0.01,
 	add: Vector3 = Vector3.UP
 ) -> void:
 	for item in resources:
 		var resource: ItemData = item.resource
-
 		var amount: int = item.amount
 
 		for i in range(0, amount):
-			var random_angle: float = randf_range(0, 2 * PI)
-			var pos: Vector3 = Vector3(radius * cos(random_angle), 1.0, radius * sin(random_angle))
+			var pos: Vector3
+			if node is Area3D:
+				var _node: Area3D = node
 
-			pos += node.global_position + add
+				var spawn_area := _node.global_transform.basis
+
+				var x := randf_range(0, spawn_area.x.x)
+				var z := randf_range(spawn_area.z.z - 8, spawn_area.z.z - 6)
+
+				pos = Vector3(x, spawn_area.y.y, z)
+			else:
+				var random_angle: float = randf_range(0, 2 * PI)
+				pos = Vector3(radius * cos(random_angle), 1.0, radius * sin(random_angle))
+				pos += node.global_position + add
 
 			main.drop_item(resource, pos)
+

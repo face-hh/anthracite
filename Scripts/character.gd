@@ -144,7 +144,7 @@ func handle_click() -> void:
 
 	play_anim(tool + "_attack")
 	squish(entity_model)
-
+	Global.sfx.play_sound("hit", true)
 	await hit_anim
 
 	entity.take_damage(tool_info.damage)
