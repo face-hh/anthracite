@@ -72,6 +72,8 @@ func manage_item_selection(_event: InputEvent, item: FurnaceItem) -> void:
 
 	if !(event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true): return
 
+	Global.sfx.play_sound("select", true)
+
 	current_item = item
 
 	select_item(item)
@@ -154,15 +156,21 @@ func _on_button_pressed() -> void:
 	_reload(current_item)
 
 	furnace.busy = true
+	Global.sfx.play_sound("confirm", true)
 
+	furnace.player_interact()
 	Global.register_furance_task(furnace, (current_item as FurnaceItem).item_name, craft_times) # CHANGE THIS LATER
 
 
 func _on_min() -> void:
+	Global.sfx.play_sound("click", true)
+
 	craft_times = 1
 	_reload(current_item)
 
 func _on_max() -> void:
+	Global.sfx.play_sound("click", true)
+
 	var max_craft_times: int = 3  # Set a default value, adjust as needed
 
 	for key: String in substract:
@@ -183,7 +191,8 @@ func _on_max() -> void:
 
 	_reload(current_item)
 
-
 func _on_plus() -> void:
+	Global.sfx.play_sound("click", true)
+
 	craft_times += 1
 	_reload(current_item)

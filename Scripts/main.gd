@@ -84,9 +84,19 @@ func toggle_inventory_interface(external_inventory_owner: Box = null) -> void:
 	inventory_interface.visible = !inventory_interface.visible
 
 	if inventory_interface.visible:
+		if external_inventory_owner is Box:
+			Global.sfx.play_sound("chest_open", true)
+		else:
+			Global.sfx.play_sound("inventory_open", true)
+
 		Global.allow_actions = false
 		hot_bar_inventory.hide()
 	else:
+		if external_inventory_owner is Box:
+			Global.sfx.play_sound("chest_close", true)
+		else:
+			Global.sfx.play_sound("inventory_close", true)
+
 		Global.allow_actions = true
 		hot_bar_inventory.show()
 

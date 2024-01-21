@@ -18,6 +18,7 @@ func update_ui(_amount: int, _texture: Texture) -> void:
 
 func player_interact() -> void:
 	if ui.visible:
+		Global.sfx.play_sound("popup_close", true)
 		Global.allow_actions = true
 
 		ui.scale = Vector2(1, 1)
@@ -25,6 +26,7 @@ func player_interact() -> void:
 		Global.allow_zoom = true
 		Global.scale_node(ui, Vector2(0.01, 0.01), func() -> void: ui.visible = !ui.visible)
 	else:
+		Global.sfx.play_sound("popup_open", true)
 		Global.allow_actions = false
 
 		ui.visible = !ui.visible

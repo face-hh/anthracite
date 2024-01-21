@@ -93,10 +93,12 @@ func update_menu() -> void:
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 
 	if !esc.visible:
+		Global.sfx.play_sound("popup_open", true)
 		esc.scale = Vector2(0.01, 0.01)
 		esc.visible = true
 		return tween.tween_property(esc, "scale", old_scale, 0.2)
 
+	Global.sfx.play_sound("popup_close", true)
 	tween.tween_property(esc, "scale", Vector2(0.01, 0.01), 0.2)
 	tween.tween_callback(func() -> void:
 		esc.visible = false
@@ -105,6 +107,7 @@ func update_menu() -> void:
 func enter_island_buy() -> void:
 	island_buy = true
 	camera.handle_manual_zoom(90)
+	Global.sfx.play_sound("zoom_out", true)
 
 	update_island_availability()
 
@@ -113,6 +116,7 @@ func enter_island_buy() -> void:
 func exit_island_buy() -> void:
 	island_buy = false
 	camera.handle_manual_zoom(60)
+	Global.sfx.play_sound("zoom_in", true)
 
 	scale_node(holograms, Vector3(0.01, 0.01, 0.01))
 
@@ -184,10 +188,11 @@ func register_furance_task(furnace: Furnace, _item: String, amount: int) -> void
 	furnace.timer.wait_time = item.craft_time
 
 	furnace.turn_vfx(true)
+	var audio: AudioStreamPlayer = Global.sfx.play_with_stop("fire")
 
 	if !furnace.timer.is_connected("timeout", spit_item_from_furnace):
 		furnace.timer.timeout.connect(spit_item_from_furnace.bind(furnace, item, amount))
-
+	furnace.timer.timeout.connect(func() -> void: Global.sfx.stop_audio_stream_player(audio))
 	furnace.timer.start()
 
 func spit_item_from_furnace(furnace: Furnace, item: ItemData, amount: int) -> void:
@@ -199,6 +204,7 @@ func spit_item_from_furnace(furnace: Furnace, item: ItemData, amount: int) -> vo
 		furnace.busy = false
 		furnace.runs = 0
 
+	Global.sfx.play_sound("tick", true)
 	give_resources([
 		{
 			"resource": item,
