@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://tcc8ayih44ko"]
+[gd_scene load_steps=19 format=3 uid="uid://tcc8ayih44ko"]
 
 [ext_resource type="Script" path="res://addons/quick_audio/SFXDemo.gd" id="1_akvs6"]
 [ext_resource type="AudioStream" uid="uid://dml6p8fui3ehm" path="res://SFX/hit.wav" id="4_a52vo"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://j71d4wh0itm8" path="res://addons/kenney_interface_sounds/tick_001.wav" id="16_vg80k"]
 [ext_resource type="AudioStream" uid="uid://bk7quu0jgnojj" path="res://SFX/fire.wav" id="17_kq7kt"]
 [ext_resource type="AudioStream" uid="uid://b33i8bqmupsqe" path="res://SFX/Select 1.wav" id="18_fyg7p"]
+[ext_resource type="AudioStream" uid="uid://dj5upag3gt442" path="res://SFX/Fastest Spook.wav" id="18_psagg"]
 [ext_resource type="AudioStream" uid="uid://b04na8m1o51yx" path="res://SFX/Confirm 1.wav" id="19_se44p"]
 [ext_resource type="AudioStream" uid="uid://cd5sy4je6e0tf" path="res://SFX/hitHurt.wav" id="21_22ap3"]
 [ext_resource type="AudioStream" uid="uid://byuma6qtqlw2f" path="res://SFX/01_chest_open_1.wav" id="23_6o02e"]
@@ -20,4 +21,4 @@
 
 [node name="SFX" type="Node3D"]
 script = ExtResource("1_akvs6")
-sounds = Array[AudioStream]([ExtResource("18_fyg7p"), ExtResource("19_se44p"), ExtResource("4_a52vo"), ExtResource("21_22ap3"), ExtResource("6_428dq"), ExtResource("23_6o02e"), ExtResource("24_lij42"), ExtResource("9_16vsl"), ExtResource("10_f7axr"), ExtResource("11_q5n25"), ExtResource("12_8c0ad"), ExtResource("13_moa5p"), ExtResource("14_2ubke"), ExtResource("15_0pr6p"), ExtResource("16_vg80k"), ExtResource("17_kq7kt")])
+sounds = Array[AudioStream]([ExtResource("18_fyg7p"), ExtResource("19_se44p"), ExtResource("4_a52vo"), ExtResource("21_22ap3"), ExtResource("6_428dq"), ExtResource("23_6o02e"), ExtResource("24_lij42"), ExtResource("9_16vsl"), ExtResource("10_f7axr"), ExtResource("11_q5n25"), ExtResource("12_8c0ad"), ExtResource("13_moa5p"), ExtResource("14_2ubke"), ExtResource("15_0pr6p"), ExtResource("16_vg80k"), ExtResource("17_kq7kt"), ExtResource("18_psagg")])
