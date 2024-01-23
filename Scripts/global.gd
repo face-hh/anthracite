@@ -203,6 +203,7 @@ func spit_item_from_furnace(furnace: Furnace, item: ItemData, amount: int) -> vo
 		furnace.timer.stop()
 		furnace.busy = false
 		furnace.runs = 0
+		furnace.turn_vfx(false)
 
 	Global.sfx.play_sound("tick", true)
 	give_resources([

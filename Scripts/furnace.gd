@@ -10,6 +10,9 @@ class_name Furnace
 @onready var spawn_area: Area3D = $Area3D
 @onready var vfx: Node3D = $VFX
 
+func _ready() -> void:
+	turn_vfx(false)
+
 var busy := false
 var runs := 0
 func update_ui(_amount: int, _texture: Texture) -> void:
@@ -50,7 +53,6 @@ func _process(_delta: float) -> void:
 	if busy: update_progress((timer.time_left / timer.wait_time) * 100)
 	else:
 		sprite_3d.hide()
-		turn_vfx(false)
 
 func update_progress(value: float) -> void:
 	if !sprite_3d.visible: sprite_3d.show()

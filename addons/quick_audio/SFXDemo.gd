@@ -21,22 +21,17 @@ class_name SFX
 	"click": [sounds[13]],
 	"tick": [sounds[14]],
 	"fire": [sounds[15]],
-	"main_menu": [sounds[16]]
+	"wind": [sounds[16]]
 }
 
 var last_sound: Variant
 
 # TODO: lower volume if play_sound is called multiple times with the same sound
 
-func _ready() -> void:
-	play_background("main_menu")
-	play_background("main_menu")
-	play_background("main_menu")
-	play_background("main_menu")
-	play_background("main_menu")
+var times: Array[float] = [10, 12.5, 30, 25]
 
-	# make it loop, this doesn't work
-	# wind sound effect instead
+func _ready() -> void:
+	create_background_loop()
 
 func play_sound(sound: String, allow_stack: bool) -> void:
 	if last_sound == sound:
@@ -76,3 +71,9 @@ func fade_out(stream_player: AudioStreamPlayer):
 
 func play_background(sound: String) -> void:
 	var player: AudioStreamPlayer = SoundManager.play_music_at_volume(sounds_map.get(sound)[0], -10, 0.5)
+
+func create_background_loop() -> void:
+	get_tree().create_timer(times.pick_random()).timeout.connect(func() -> void:
+		play_sound("wind", true)
+		create_background_loop()
+	)

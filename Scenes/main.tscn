@@ -265,7 +265,7 @@ character = NodePath("../../Character")
 [node name="Misc" type="Node3D" parent="."]
 
 [node name="Timer" type="Timer" parent="Misc"]
-wait_time = 2.0
+wait_time = 10.0
 autostart = true
 
 [node name="holograms" type="Node3D" parent="."]

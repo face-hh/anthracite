@@ -39,7 +39,7 @@ func _ready() -> void:
 	#anim.play("idle")
 
 	await get_tree().create_timer(1).timeout
-	Global.give_money(99)
+	Global.give_money(300)
 
 func _physics_process(delta: float) -> void:
 	handle_input()
