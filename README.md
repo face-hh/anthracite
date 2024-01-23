@@ -1,14 +1,6 @@
-# Free Look Camera for Godot 4
+# Anthracite
 
-A simple and easy to use free look camera for Godot 4 that mimics the controls of the editor camera.
+![ok](https://cdn.discordapp.com/attachments/907310152359768115/1198324349732663418/Peek_2024-01-20_19-52.gif?ex=65be7d84&is=65ac0884&hm=96d8ec781589f3458aee2739d460174bde531790147c17314567c004dd55070e&)
 
-### Features: 
-- Look around by holding right click and moving the mouse
-- Move forward and backward with W and S
-- Move left and right with A and D
-- Move up and down with Q and E 
-- Change movement speed by using the scroll wheel 
-- Temporary increase speed by holding shift
-
-### Installation:
-- attach "free_look_camera.gd" to your Camera3D node
+made for https://itch.io/jam/pirate
+but gave up on it
